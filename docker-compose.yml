@@ -1,0 +1,14 @@
+rabbitmq:
+  image: rabbitmq:management
+  ports:
+  - "5672:5672"
+  - "15672:15672"
+
+postgres:
+  image: debezium/postgres:9.6
+  ports:
+  - 5432:5432
+  environment:
+  - POSTGRES_USER=postgres
+  - POSTGRES_PASSWORD=secret
+  - POSTGRES_DB=callcenter
