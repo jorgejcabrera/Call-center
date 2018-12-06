@@ -1,6 +1,7 @@
 package com.projects.callcenter.controller;
 
 import com.projects.callcenter.config.RabbitMqConfig;
+import com.projects.callcenter.services.CallCenterService;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,14 +16,12 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RequestMapping("/callcenter")
 public class CallCenterController {
 
-    private static final String MESSAGE = "Hello world!";
-
     @Autowired
-    RabbitTemplate rabbitTemplate;
+    private CallCenterService callCenterService;
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<?> call() {
-        rabbitTemplate.convertAndSend(RabbitMqConfig.EXCHANGE_NAME, RabbitMqConfig.ROUTING_KEY, MESSAGE);
+        callCenterService.call();
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
