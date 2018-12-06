@@ -19,7 +19,7 @@ public class CallCenterController {
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<?> call() {
-        callCenterService.call();
+        callCenterService.receiveCall();
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

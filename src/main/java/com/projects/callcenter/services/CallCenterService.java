@@ -17,7 +17,7 @@ public class CallCenterService {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    public void call() {
+    public void receiveCall() {
         rabbitTemplate.convertAndSend(RabbitMqConfig.EXCHANGE_NAME, RabbitMqConfig.ROUTING_KEY, MESSAGE);
     }
 }
