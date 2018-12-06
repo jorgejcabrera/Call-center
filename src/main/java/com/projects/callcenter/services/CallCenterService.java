@@ -1,16 +1,12 @@
 package com.projects.callcenter.services;
 
 import com.projects.callcenter.config.RabbitMqConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CallCenterService {
-
-    private static final Logger logger = LoggerFactory.getLogger(CallCenterService.class);
 
     private static final String MESSAGE = "Hello world!";
 

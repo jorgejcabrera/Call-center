@@ -6,6 +6,5 @@ import org.springframework.stereotype.Service;
 public class DispatcherService {
 
     public void assignCall() {
-
     }
 }
