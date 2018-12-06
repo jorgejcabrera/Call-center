@@ -1,8 +1,6 @@
 package com.projects.callcenter.controller;
 
-import com.projects.callcenter.config.RabbitMqConfig;
 import com.projects.callcenter.services.CallCenterService;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

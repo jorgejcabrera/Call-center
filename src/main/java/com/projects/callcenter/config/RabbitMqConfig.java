@@ -17,9 +17,9 @@ public class RabbitMqConfig {
 
     public static final String EXCHANGE_NAME = "exchange_name";
     public static final String ROUTING_KEY = "routing_key";
-
     private static final String QUEUE_NAME = "call_center_queue";
     private static final boolean IS_DURABLE_QUEUE = false;
+    private static final int MAX_CONCURRENT_CONSUMERS = 100;
 
     @Bean
     Queue queue() {
@@ -41,6 +41,7 @@ public class RabbitMqConfig {
         final SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
         container.setQueueNames(QUEUE_NAME);
+        container.setConcurrentConsumers(MAX_CONCURRENT_CONSUMERS);
         container.setMessageListener(listenerAdapter);
         return container;
     }
