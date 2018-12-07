@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface EmployeeRepository extends CrudRepository<Employee,Long> {
 
-    @Query(value = "select * from Employee e where e.id in (SELECT er.employee_id FROM Employee_role er WHERE er.role = ?2) and e.status = ?1", nativeQuery = true)
+    @Query(value = "select * from Employee e where e.status = ?1 and e.id in (SELECT er.employee_id FROM Employee_role er WHERE er.role = ?2)", nativeQuery = true)
     public List<Employee> findAllByStatusAndRole(int status,int role);
 }

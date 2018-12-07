@@ -1,21 +1,32 @@
-## Enunciado
-Existe un call center donde hay 3 tipos de empleados: operador, supervisor
-y director. El proceso de la atención de una llamada telefónica en primera
-instancia debe ser atendida por un operador, si no hay ninguno libre debe
-ser atendida por un supervisor, y de no haber tampoco supervisores libres
-debe ser atendida por un director.
 
-#####Requetimientos
-Debe existir una clase Dispatcher encargada de manejar las
-llamadas, y debe contener el método dispatchCall para que las
-asigne a los empleados disponibles.
+#CallCenter API Rest
 
-El método dispatchCall puede invocarse por varios hilos al mismo
-tiempo.
+##Overview
+API Rest for basic call center.
 
-La clase Dispatcher debe tener la capacidad de poder procesar 10
-llamadas al mismo tiempo (de modo concurrente).
-Cada llamada puede durar un tiempo aleatorio entre 5 y 10
-segundos.
+##Requirements
+- Java
+- Maven
+- Docker
+- RabbitMQ
+- Postgres
 
-Debe tener un test unitario donde lleguen 10 llamadas.
+## Developing application locally
+Create and run Pgsql Db and Rabbit Queue:
+``` 
+$ docker-compose up
+```
+run server by console with
+```
+$ mvn spring-boot:run
+```
+
+##Test
+1 Create and run psql database and rabbit queue:
+``` 
+$ docker-compose up
+```
+2 Test your changes
+```
+$ mvn test
+```
