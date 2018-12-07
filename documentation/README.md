@@ -5,7 +5,7 @@ instancia debe ser atendida por un operador, si no hay ninguno libre debe
 ser atendida por un supervisor, y de no haber tampoco supervisores libres
 debe ser atendida por un director.
 
-###Requetimientos
+### Requerimientos
 - Debe existir una clase Dispatcher encargada de manejar las
 llamadas, y debe contener el método dispatchCall para que las
 asigne a los empleados disponibles.
