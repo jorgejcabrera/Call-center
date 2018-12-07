@@ -22,3 +22,6 @@ segundos.
 
 ### Arquitectura
 ![alt text](https://github.com/jorgejcabrera/Call-center/blob/master/documentation/arquitectura.png)
+
+### Diagrama de clases
+![alt text](https://github.com/jorgejcabrera/Call-center/blob/master/documentation/diagrama_de_clases.png)
