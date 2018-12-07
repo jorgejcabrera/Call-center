@@ -20,3 +20,5 @@ segundos.
 
 - Debe tener un test unitario donde lleguen 10 llamadas.
 
+### Arquitectura
+![alt text](https://github.com/jorgejcabrera/Call-center/blob/master/documentation/arquitectura.png)
