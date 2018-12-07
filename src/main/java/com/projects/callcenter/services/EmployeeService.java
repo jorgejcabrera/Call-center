@@ -5,7 +5,6 @@ import com.projects.callcenter.domain.EmployeeRole;
 import com.projects.callcenter.enums.Role;
 import com.projects.callcenter.exception.NotFoundException;
 import com.projects.callcenter.repository.EmployeeRepository;
-import com.projects.callcenter.repository.EmployeeRoleRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +21,6 @@ public class EmployeeService {
 
     @Autowired
     EmployeeRepository employeeRepository;
-    @Autowired
-    EmployeeRoleRepository employeeRoleRepository;
 
     public void create(Employee employee) {
         try{
@@ -52,7 +49,6 @@ public class EmployeeService {
                 throw ex;
             }
         }
-
     }
 
 }

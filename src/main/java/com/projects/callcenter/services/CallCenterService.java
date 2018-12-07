@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CallCenterService {
 
-    private static final String MESSAGE = "Hello world!";
+    private static final String MESSAGE = "Calling";
 
     @Autowired
     private RabbitTemplate rabbitTemplate;

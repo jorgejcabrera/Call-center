@@ -1,0 +1,1 @@
+CREATE INDEX status_idx ON public.employee (status);
