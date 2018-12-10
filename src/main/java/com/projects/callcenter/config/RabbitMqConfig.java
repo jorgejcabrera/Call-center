@@ -19,7 +19,7 @@ public class RabbitMqConfig {
     public static final String ROUTING_KEY = "routing_key";
     private static final String QUEUE_NAME = "call_center_queue";
     private static final boolean IS_DURABLE_QUEUE = false;
-    private static final int MAX_CONCURRENT_CONSUMERS = 100;
+    private static final int MAX_CONCURRENT_CONSUMERS = 50;
 
     @Bean
     Queue queue() {

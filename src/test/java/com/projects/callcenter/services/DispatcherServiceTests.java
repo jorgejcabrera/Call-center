@@ -50,7 +50,7 @@ public class DispatcherServiceTests {
 
         //when
         when(employeeRepository.findAllByStatusAndRole(EmployeeStatus.FREE.ordinal(), Role.OPERATOR.ordinal())).thenReturn(employees);
-        assertTrue(dispatcherService.assignCall());
+        assertTrue(dispatcherService.assignCall().isPresent());
     }
 
 
@@ -70,6 +70,6 @@ public class DispatcherServiceTests {
 
         //when
         when(employeeRepository.findAllByStatusAndRole(EmployeeStatus.FREE.ordinal(), Role.OPERATOR.ordinal())).thenReturn(new ArrayList<>());
-        assertFalse(dispatcherService.assignCall());
+        assertFalse(dispatcherService.assignCall().isPresent());
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DispatcherService {
@@ -19,13 +20,17 @@ public class DispatcherService {
     @Autowired
     EmployeeRepository employeeRepository;
 
-    public boolean assignCall() {
-        return (assignCallByRole(Role.OPERATOR) ||
-                assignCallByRole(Role.SUPERVISOR) ||
-                assignCallByRole(Role.DIRECTOR));
+    public Optional<Employee> assignCall() {
+        Optional<Employee> operator = assignCallByRole(Role.OPERATOR);
+        if (operator.isPresent())
+            return operator;
+        Optional<Employee> supervisor = assignCallByRole(Role.SUPERVISOR);
+        if (supervisor.isPresent())
+            return supervisor;
+        return assignCallByRole(Role.DIRECTOR);
     }
 
-    private boolean assignCallByRole(Role role) {
+    private Optional<Employee> assignCallByRole(Role role) {
         try{
             List<Employee> freeEmployees = employeeRepository.findAllByStatusAndRole(EmployeeStatus.FREE.ordinal(), role.ordinal());
             if (!freeEmployees.isEmpty()) {
@@ -33,12 +38,12 @@ public class DispatcherService {
                 employee.setStatus(EmployeeStatus.BUSY);
                 employeeRepository.save(employee);
                 logger.info("Employee {} is taking a call.",String.format("id %s %s %s",employee.getId(),employee.getLastName(),employee.getName()));
-                return true;
+                return Optional.ofNullable(employee);
             }
         } catch (Exception ex) {
             logger.error("It was an error while trying to assign call: {}",ex.getMessage());
             throw ex;
         }
-        return false;
+        return Optional.empty();
     }
 }
