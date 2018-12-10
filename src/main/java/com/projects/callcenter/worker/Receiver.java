@@ -26,7 +26,7 @@ public class Receiver {
 
     public void doWork(String message) {
         logger.debug("[Receiver] ha recibido el mensaje: {}", message);
-        Optional<Employee> employee = dispatcherService.assignCall();
+        Optional<Employee> employee = dispatcherService.dispatchCall();
         if (!employee.isPresent())
             throw new RuntimeException();
 

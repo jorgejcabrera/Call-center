@@ -16,6 +16,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -50,7 +51,7 @@ public class DispatcherServiceTests {
 
         //when
         when(employeeRepository.findAllByStatusAndRole(EmployeeStatus.FREE.ordinal(), Role.OPERATOR.ordinal())).thenReturn(employees);
-        assertTrue(dispatcherService.assignCall().isPresent());
+        assertTrue(dispatcherService.dispatchCall().isPresent());
     }
 
 
@@ -70,6 +71,6 @@ public class DispatcherServiceTests {
 
         //when
         when(employeeRepository.findAllByStatusAndRole(EmployeeStatus.FREE.ordinal(), Role.OPERATOR.ordinal())).thenReturn(new ArrayList<>());
-        assertFalse(dispatcherService.assignCall().isPresent());
+        assertFalse(dispatcherService.dispatchCall().isPresent());
     }
 }

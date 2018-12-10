@@ -20,17 +20,17 @@ public class DispatcherService {
     @Autowired
     EmployeeRepository employeeRepository;
 
-    public Optional<Employee> assignCall() {
-        Optional<Employee> operator = assignCallByRole(Role.OPERATOR);
+    public Optional<Employee> dispatchCall() {
+        Optional<Employee> operator = dispatchCallByRole(Role.OPERATOR);
         if (operator.isPresent())
             return operator;
-        Optional<Employee> supervisor = assignCallByRole(Role.SUPERVISOR);
+        Optional<Employee> supervisor = dispatchCallByRole(Role.SUPERVISOR);
         if (supervisor.isPresent())
             return supervisor;
-        return assignCallByRole(Role.DIRECTOR);
+        return dispatchCallByRole(Role.DIRECTOR);
     }
 
-    private Optional<Employee> assignCallByRole(Role role) {
+    private Optional<Employee> dispatchCallByRole(Role role) {
         try{
             List<Employee> freeEmployees = employeeRepository.findAllByStatusAndRole(EmployeeStatus.FREE.ordinal(), role.ordinal());
             if (!freeEmployees.isEmpty()) {
