@@ -30,3 +30,9 @@ $ docker-compose up
 ```
 $ mvn test
 ```
+
+## Example
+Make a call with the follow command:
+```
+curl -X POST -H "Content-Type: application/json" 'localhost:8080/callcenter' | jq .
+```
